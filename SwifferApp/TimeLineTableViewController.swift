@@ -42,8 +42,6 @@ class TimeLineTableViewController: UITableViewController {
                         
                         //let array:NSArray = self.timelineData.reverseObjectEnumerator().allObjects
                     
-                        println(objects)
-                    
                        // self.timelineData = array as NSMutableArray
                     
                     
@@ -140,7 +138,7 @@ class TimeLineTableViewController: UITableViewController {
                 sweeter.signUpInBackgroundWithBlock{
                     (success:Bool!, error:NSError!)-> Void in
                     
-                    if (error != nil) {
+                    if (error == nil) {
                         
                      println("Sign Up Successful")
                     }else{
