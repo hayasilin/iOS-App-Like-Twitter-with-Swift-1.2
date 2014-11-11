@@ -13,6 +13,7 @@ class SweetTableViewCell: UITableViewCell {
     @IBOutlet var usernameLabel: UILabel! = UILabel()
     @IBOutlet var timestampLabel: UILabel! = UILabel()
     @IBOutlet var sweetTextView: UITextView! = UITextView()
+    @IBOutlet var profileImageView: UIImageView! = UIImageView()
     
     override func awakeFromNib() {
         super.awakeFromNib()

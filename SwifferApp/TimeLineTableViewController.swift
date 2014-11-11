@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimeLineTableViewController: UITableViewController {
+class TimeLineTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var timelineData = [PFObject]()
     
@@ -82,78 +82,155 @@ class TimeLineTableViewController: UITableViewController {
 
 */
     
+    //stopped @ 18:10 
+    
     override func viewDidAppear(animated: Bool) {
         
         self.loadData()
         
+        var footerView:UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 50))
+        self.tableView.tableFooterView = footerView
+        
+        var logoutButton:UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        logoutButton.frame = CGRectMake(20, 10, 50, 20)
+        logoutButton.setTitle("Logout", forState: UIControlState.Normal)
+        logoutButton.addTarget(self, action:"logout:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        footerView.addSubview(logoutButton)
         
         if((PFUser.currentUser()) == nil){
             
-            var loginAlert:UIAlertController = UIAlertController(title: "Sign Up / Login ", message: "Please Sign Up or Login", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            loginAlert.addTextFieldWithConfigurationHandler({
-                textfield in
-                textfield.placeholder = "Your username"
-                
-            })
-            
-            loginAlert.addTextFieldWithConfigurationHandler({
-                textfield in
-                textfield.placeholder = "Your Password"
-                textfield.secureTextEntry = true
-                
-            })
-            
-            loginAlert.addAction(UIAlertAction(title: "Login", style: UIAlertActionStyle.Default, handler: {
-                alertAction in
-                let textFields:NSArray = loginAlert.textFields as AnyObject! as NSArray
-                let usernameTextField:UITextField = textFields.objectAtIndex(0) as UITextField
-                let passwordTextField:UITextField = textFields.objectAtIndex(1) as UITextField
-                
-                PFUser.logInWithUsernameInBackground(usernameTextField.text, password: passwordTextField.text){
-                    (user:PFUser!, error:NSError!)->Void in
-                    if((user) != nil){
-                        println("Login Successful")
-                    }else{
-                        println("Login Failed")
-                    }
-                }
-                
-                
-                
-            }))
+            self.showLoginSignUp()
             
             
-            
-            loginAlert.addAction(UIAlertAction(title: "Sign Up", style: UIAlertActionStyle.Default, handler: {
-                alertAction in
-                let textFields:NSArray = loginAlert.textFields as AnyObject! as NSArray
-                let usernameTextField:UITextField = textFields.objectAtIndex(0) as UITextField
-                let passwordTextField:UITextField = textFields.objectAtIndex(1) as UITextField
-                
-                var sweeter:PFUser = PFUser()
-                sweeter.username = usernameTextField.text
-                sweeter.password = passwordTextField.text
-                
-                sweeter.signUpInBackgroundWithBlock{
-                    (success:Bool!, error:NSError!)-> Void in
-                    
-                    if (error == nil) {
-                        
-                     println("Sign Up Successful")
-                    }else{
-                        
-                        println("Error")
-                        
-                    }
-                }
-                
-                
-            }))
-            
-            self.presentViewController(loginAlert, animated: true, completion: nil)
- 
         }
+        
+    
+    
+    
+    
+    
+    
+}
+    
+    
+    
+    func showLoginSignUp()
+    {
+        var loginAlert:UIAlertController = UIAlertController(title: "Sign Up / Login ", message: "Please Sign Up or Login", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        loginAlert.addTextFieldWithConfigurationHandler({
+            textfield in
+            textfield.placeholder = "Your username"
+            
+        })
+        
+        loginAlert.addTextFieldWithConfigurationHandler({
+            textfield in
+            textfield.placeholder = "Your Password"
+            textfield.secureTextEntry = true
+            
+        })
+        
+        loginAlert.addAction(UIAlertAction(title: "Login", style: UIAlertActionStyle.Default, handler: {
+            alertAction in
+            let textFields:NSArray = loginAlert.textFields as AnyObject! as NSArray
+            let usernameTextField:UITextField = textFields.objectAtIndex(0) as UITextField
+            let passwordTextField:UITextField = textFields.objectAtIndex(1) as UITextField
+            
+            PFUser.logInWithUsernameInBackground(usernameTextField.text, password: passwordTextField.text){
+                (user:PFUser!, error:NSError!)->Void in
+                if((user) != nil){
+                    println("Login Successful")
+                }else{
+                    println("Login Failed")
+                }
+            }
+            
+            
+            
+        }))
+        
+        
+        
+        loginAlert.addAction(UIAlertAction(title: "Sign Up", style: UIAlertActionStyle.Default, handler: {
+            alertAction in
+            let textFields:NSArray = loginAlert.textFields as AnyObject! as NSArray
+            let usernameTextField:UITextField = textFields.objectAtIndex(0) as UITextField
+            let passwordTextField:UITextField = textFields.objectAtIndex(1) as UITextField
+            
+            var sweeter:PFUser = PFUser()
+            sweeter.username = usernameTextField.text
+            sweeter.password = passwordTextField.text
+            
+            sweeter.signUpInBackgroundWithBlock{
+                (success:Bool!, error:NSError!)-> Void in
+                
+                if (error == nil) {
+                    
+                    println("Sign Up Successful")
+                    
+                    var imagePicker:UIImagePickerController = UIImagePickerController()
+                    
+                    imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                    
+                    imagePicker.delegate = self
+                    
+                    self.presentViewController(imagePicker, animated: true, completion: nil)
+                    
+                    
+                    
+                }else{
+                    
+                    println("Error")
+                    
+                }
+            }
+            
+            
+        }))
+        
+        self.presentViewController(loginAlert, animated: true, completion: nil)
+
+    }
+    
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
+        
+         let pickedImage:UIImage = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
+        
+         //Scale 
+        let scaledImage = self.scaleImageWith(pickedImage, and:CGSizeMake(80, 80))
+        
+        let imageData = UIImagePNGRepresentation(scaledImage)
+        let imageFile:PFFile = PFFile(name: "Profile", data: imageData )
+        
+        PFUser.currentUser().setObject(imageFile , forKey: "profilePicture")
+        PFUser.currentUser().save()
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        
+        
+        
+    }
+    
+    func scaleImageWith(image:UIImage, and newSize:CGSize )-> UIImage{
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
+        var newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        
+        return newImage
+        
+        
+    }
+    
+    func logout(sender:UIButton){
+        PFUser.logOut()
+        self.showLoginSignUp()
+        
         
     }
 
@@ -200,7 +277,7 @@ class TimeLineTableViewController: UITableViewController {
         dataFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         cell.timestampLabel.text = dataFormatter.stringFromDate(sweet.createdAt)
 
-        
+  
         
         var findSweeter: PFQuery = PFUser.query()
         findSweeter.whereKey("objectId", equalTo: sweet.objectForKey("sweeter").objectId)
@@ -213,10 +290,26 @@ class TimeLineTableViewController: UITableViewController {
                 let user:PFUser = (objects as NSArray).lastObject as PFUser
                 cell.usernameLabel.text = user.username
                 
+                //Profile Image 
+                cell.profileImageView.alpha = 0
+                
+                let profileImage:PFFile = user["profilePicture"] as PFFile
+                
+                profileImage.getDataInBackgroundWithBlock{
+                    (imageData:NSData! , error:NSError!)-> Void in
+                    
+                    if(error == nil) {
+                        let image:UIImage = UIImage (data: imageData)!
+                        cell.profileImageView.image = image 
+                        
+                    }
+                }
+                
                 UIView.animateWithDuration(0.5, animations: {
-                 cell.sweetTextView.alpha = 1
-                 cell.timestampLabel.alpha = 1
-                 cell.usernameLabel.alpha = 1 
+                cell.sweetTextView.alpha = 1
+                cell.timestampLabel.alpha = 1
+                cell.usernameLabel.alpha = 1
+                cell.profileImageView.alpha = 1
                 })
                 
             }

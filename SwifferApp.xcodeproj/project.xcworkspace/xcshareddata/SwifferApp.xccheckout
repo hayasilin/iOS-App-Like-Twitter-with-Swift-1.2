@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3482D0B9-76B7-4381-9C10-767981EFF537</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SwifferApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>337091F3C99A796D47B2224E9969E765536C295B</key>
+		<string>https://github.com/Kkhattab/App-Like-Twitter.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SwifferApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>337091F3C99A796D47B2224E9969E765536C295B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Kkhattab/App-Like-Twitter.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>337091F3C99A796D47B2224E9969E765536C295B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>337091F3C99A796D47B2224E9969E765536C295B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SwifferApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>
