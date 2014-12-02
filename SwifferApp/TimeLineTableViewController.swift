@@ -8,85 +8,84 @@
 
 import UIKit
 
-class TimeLineTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+class TimeLineTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    
     var timelineData = [PFObject]()
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+    
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+    
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        self.loadData()
+       
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loadData", name:"reloadTimeline" , object: nil)
+        
+        
+    }
+    
+    
+    @IBAction func refreshButton()
+    {
+        timelineData.removeAll(keepCapacity: false)
+        
+        var findTimelineData:PFQuery = PFQuery(className:"Sweets")
+        findTimelineData.findObjectsInBackgroundWithBlock
+            {
+                (objects:[AnyObject]! , error:NSError!) -> Void in
+                if error == nil
+                {
+                    self.timelineData = objects.reverse() as [PFObject]
+                    
+                    
+                    //let array:NSArray = self.timelineData.reverseObjectEnumerator().allObjects
+                    
+                    println(objects)
+                    
+                    // self.timelineData = array as NSMutableArray
+                    
+                    
+                    self.tableView.reloadData()
+                }
+        }
+    }
     
     @IBAction func loadData(){
         timelineData.removeAll(keepCapacity: false)
         
-            var findTimelineData:PFQuery = PFQuery(className:"Sweets")
-            findTimelineData.findObjectsInBackgroundWithBlock
-                {
-                    (objects:[AnyObject]! , error:NSError!) -> Void in
-                    if error == nil
-                    {
-                        self.timelineData = objects.reverse() as [PFObject]
-                        
-                        
-                        //let array:NSArray = self.timelineData.reverseObjectEnumerator().allObjects
-                    
-                       // self.timelineData = array as NSMutableArray
-                    
-                    
-                        self.tableView.reloadData()
-                }
-            }
-    }
-
-    
-/*
-    @IBAction func loadData()
-    {
-        timelineData.removeAllObjects()
-        
-        var findTimelineData : PFQuery = PFUser.query()
-        findTimelineData.findObjectsInBackgroundWithBlock{
-            (objects: [AnyObject]!, error: NSError!)-> Void in
-            if error == nil
+        var findTimelineData:PFQuery = PFQuery(className:"Sweets")
+        findTimelineData.findObjectsInBackgroundWithBlock
             {
-                println("No error")
-                
-                if let objects = objects as? [PFObject!]
+                (objects:[AnyObject]! , error:NSError!) -> Void in
+                if error == nil
                 {
-                    for object in objects
-                    {
-                        self.timelineData.addObject(object)
-                    }
+                    self.timelineData = objects.reverse() as [PFObject]
+                    
+                    
+                    //let array:NSArray = self.timelineData.reverseObjectEnumerator().allObjects
+                    
+                    // self.timelineData = array as NSMutableArray
+                    
+                    
+                    
+                    self.tableView.reloadData()
                 }
-                
-                let array : NSArray = self.timelineData.reverseObjectEnumerator().allObjects
-                self.timelineData = array as NSMutableArray
-                
-                self.tableView.reloadData()
-            }
-            
         }
     }
 
-*/
     
-    //stopped @ 18:10 
+    
     
     override func viewDidAppear(animated: Bool) {
         
-        self.loadData()
+       
         
         var footerView:UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 50))
         self.tableView.tableFooterView = footerView
@@ -105,18 +104,18 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
             
         }
         
-    
-    
-    
-    
-    
-    
+        
+        
+      
+        
 }
     
     
     
     func showLoginSignUp()
     {
+        
+        
         var loginAlert:UIAlertController = UIAlertController(title: "Sign Up / Login ", message: "Please Sign Up or Login", preferredStyle: UIAlertControllerStyle.Alert)
         
         loginAlert.addTextFieldWithConfigurationHandler({
@@ -142,6 +141,14 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
                 (user:PFUser!, error:NSError!)->Void in
                 if((user) != nil){
                     println("Login Successful")
+                    var installation:PFInstallation = PFInstallation.currentInstallation()
+                    installation.addUniqueObject("Reload", forKey: "channels")
+                    installation["user"] = PFUser.currentUser()
+                    installation.saveInBackgroundWithTarget(nil, selector: nil)
+                    
+                    
+                    
+                    
                 }else{
                     println("Login Failed")
                 }
@@ -171,12 +178,15 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
                     println("Sign Up Successful")
                     
                     var imagePicker:UIImagePickerController = UIImagePickerController()
-                    
                     imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-                    
                     imagePicker.delegate = self
-                    
                     self.presentViewController(imagePicker, animated: true, completion: nil)
+                    
+                    var installation:PFInstallation = PFInstallation.currentInstallation()
+                    installation.addUniqueObject("Reload", forKey: "channels")
+                    installation["user"] = PFUser.currentUser()
+                    installation.saveInBackgroundWithTarget(nil, selector: nil)
+
                     
                     
                     
@@ -191,14 +201,14 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
         }))
         
         self.presentViewController(loginAlert, animated: true, completion: nil)
-
+        
     }
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
         
-         let pickedImage:UIImage = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
+        let pickedImage:UIImage = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
         
-         //Scale 
+        //Scale
         let scaledImage = self.scaleImageWith(pickedImage, and:CGSizeMake(80, 80))
         
         let imageData = UIImagePNGRepresentation(scaledImage)
@@ -233,28 +243,31 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
         
         
     }
+    
+    
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
-
- override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return timelineData.count
     }
-
-
-
+    
+    
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
         let cell: SweetTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as SweetTableViewCell
@@ -266,7 +279,7 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
         cell.sweetTextView.alpha = 0
         cell.timestampLabel.alpha = 0
         cell.usernameLabel.alpha = 0
-
+        
         
         
         cell.sweetTextView.text = sweet.objectForKey("content") as String
@@ -276,21 +289,54 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
         var dataFormatter:NSDateFormatter = NSDateFormatter()
         dataFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         cell.timestampLabel.text = dataFormatter.stringFromDate(sweet.createdAt)
-
-  
+        
+        
         
         var findSweeter: PFQuery = PFUser.query()
         findSweeter.whereKey("objectId", equalTo: sweet.objectForKey("sweeter").objectId)
         
-
+        
         
         findSweeter.findObjectsInBackgroundWithBlock{
             (objects:[AnyObject]!, error:NSError!)->Void in
             if (error == nil){
+                if let actualObjects = objects {
+                    let possibleUser = (actualObjects as NSArray).lastObject as? PFUser
+                    if let user = possibleUser {
+                        cell.usernameLabel.text = user.username
+                        
+                        //Profile Image
+                        cell.profileImageView.alpha = 0
+                        
+                        let profileImage:PFFile = user["profilePicture"] as PFFile
+                        
+                        profileImage.getDataInBackgroundWithBlock{
+                            (imageData:NSData! , error:NSError!)-> Void in
+                            
+                            if(error == nil) {
+                                let image:UIImage = UIImage (data: imageData)!
+                                cell.profileImageView.image = image
+                                
+                            }
+                        }
+                        
+                        UIView.animateWithDuration(0.5, animations: {
+                            cell.sweetTextView.alpha = 1
+                            cell.timestampLabel.alpha = 1
+                            cell.usernameLabel.alpha = 1
+                            cell.profileImageView.alpha = 1
+                        })
+                        
+                    }
+                }
+
+                    }
+                }
+               /*
                 let user:PFUser = (objects as NSArray).lastObject as PFUser
                 cell.usernameLabel.text = user.username
                 
-                //Profile Image 
+                //Profile Image
                 cell.profileImageView.alpha = 0
                 
                 let profileImage:PFFile = user["profilePicture"] as PFFile
@@ -300,68 +346,70 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
                     
                     if(error == nil) {
                         let image:UIImage = UIImage (data: imageData)!
-                        cell.profileImageView.image = image 
+                        cell.profileImageView.image = image
                         
-                    }
+                                    }
                 }
-                
+
                 UIView.animateWithDuration(0.5, animations: {
-                cell.sweetTextView.alpha = 1
-                cell.timestampLabel.alpha = 1
-                cell.usernameLabel.alpha = 1
-                cell.profileImageView.alpha = 1
+                    cell.sweetTextView.alpha = 1
+                    cell.timestampLabel.alpha = 1
+                    cell.usernameLabel.alpha = 1
+                    cell.profileImageView.alpha = 1
                 })
                 
             }
         }
+        */
+        
         
         return cell
     }
     
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    // Return NO if you do not want the specified item to be editable.
+    return true
     }
     */
-
+    
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    if editingStyle == .Delete {
+    // Delete the row from the data source
+    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    } else if editingStyle == .Insert {
+    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
     }
     */
-
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
     }
     */
-
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
+    // Return NO if you do not want the item to be re-orderable.
+    return true
     }
     */
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

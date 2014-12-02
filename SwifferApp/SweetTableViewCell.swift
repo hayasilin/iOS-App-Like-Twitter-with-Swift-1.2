@@ -15,6 +15,8 @@ class SweetTableViewCell: UITableViewCell {
     @IBOutlet var sweetTextView: UITextView! = UITextView()
     @IBOutlet var profileImageView: UIImageView! = UIImageView()
     
+  
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

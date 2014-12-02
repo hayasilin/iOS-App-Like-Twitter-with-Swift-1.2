@@ -11,7 +11,6 @@
 		1403221B1A0ECD3200CAEDA4 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1403221A1A0ECD3200CAEDA4 /* ComposeViewController.swift */; };
 		1403221D1A0ED59400CAEDA4 /* SweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1403221C1A0ED59400CAEDA4 /* SweetTableViewCell.swift */; };
 		1413581C1A0EAEC7000E08A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413581B1A0EAEC7000E08A8 /* AppDelegate.swift */; };
-		1413581E1A0EAEC7000E08A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413581D1A0EAEC7000E08A8 /* ViewController.swift */; };
 		141358211A0EAEC7000E08A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1413581F1A0EAEC7000E08A8 /* Main.storyboard */; };
 		141358231A0EAEC7000E08A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141358221A0EAEC7000E08A8 /* Images.xcassets */; };
 		141358261A0EAEC7000E08A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141358241A0EAEC7000E08A8 /* LaunchScreen.xib */; };
@@ -30,8 +29,12 @@
 		141358551A0EB037000E08A8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141358511A0EB037000E08A8 /* Parse.framework */; };
 		141358561A0EB037000E08A8 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141358521A0EB037000E08A8 /* ParseFacebookUtils.framework */; };
 		141358571A0EB037000E08A8 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141358531A0EB037000E08A8 /* ParseUI.framework */; };
+		14177D0B1A143D4E00BBE607 /* DirectMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14177D0A1A143D4E00BBE607 /* DirectMessageTableViewController.swift */; };
 		141984511A102D8300999767 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141984501A102D8300999767 /* Social.framework */; };
 		141984531A102DFE00999767 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141984521A102DFE00999767 /* Accounts.framework */; };
+		14C7AE9E1A2543B500F777EA /* SwifferApp-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 141358591A0EB112000E08A8 /* SwifferApp-Bridging-Header.h */; };
+		14F895F11A1EBC1200673E10 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F894DB1A1EBC1200673E10 /* FacebookSDK.framework */; };
+		14F895F21A1EBC1200673E10 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F894DD1A1EBC1200673E10 /* FBAudienceNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +54,6 @@
 		141358161A0EAEC7000E08A8 /* SwifferApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwifferApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1413581A1A0EAEC7000E08A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1413581B1A0EAEC7000E08A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1413581D1A0EAEC7000E08A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		141358201A0EAEC7000E08A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		141358221A0EAEC7000E08A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		141358251A0EAEC7000E08A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -73,8 +75,11 @@
 		141358521A0EB037000E08A8 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		141358531A0EB037000E08A8 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		141358591A0EB112000E08A8 /* SwifferApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwifferApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		14177D0A1A143D4E00BBE607 /* DirectMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectMessageTableViewController.swift; sourceTree = "<group>"; };
 		141984501A102D8300999767 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		141984521A102DFE00999767 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		14F894DB1A1EBC1200673E10 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		14F894DD1A1EBC1200673E10 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = ../../FacebookSDK/FBAudienceNetwork/FBAudienceNetwork.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +92,8 @@
 				1413584E1A0EAFB4000E08A8 /* SystemConfiguration.framework in Frameworks */,
 				1413584C1A0EAFAB000E08A8 /* StoreKit.framework in Frameworks */,
 				141358571A0EB037000E08A8 /* ParseUI.framework in Frameworks */,
+				14F895F11A1EBC1200673E10 /* FacebookSDK.framework in Frameworks */,
+				14F895F21A1EBC1200673E10 /* FBAudienceNetwork.framework in Frameworks */,
 				1413584A1A0EAFA2000E08A8 /* Security.framework in Frameworks */,
 				141358481A0EAF96000E08A8 /* QuartzCore.framework in Frameworks */,
 				141358461A0EAF8B000E08A8 /* MobileCoreServices.framework in Frameworks */,
@@ -137,9 +144,9 @@
 				140322181A0ECC5200CAEDA4 /* TimeLineTableViewController.swift */,
 				1403221A1A0ECD3200CAEDA4 /* ComposeViewController.swift */,
 				1403221C1A0ED59400CAEDA4 /* SweetTableViewCell.swift */,
-				1413581D1A0EAEC7000E08A8 /* ViewController.swift */,
 				141358591A0EB112000E08A8 /* SwifferApp-Bridging-Header.h */,
 				1413581F1A0EAEC7000E08A8 /* Main.storyboard */,
+				14177D0A1A143D4E00BBE607 /* DirectMessageTableViewController.swift */,
 				141358221A0EAEC7000E08A8 /* Images.xcassets */,
 				141358241A0EAEC7000E08A8 /* LaunchScreen.xib */,
 				141358191A0EAEC7000E08A8 /* Supporting Files */,
@@ -195,6 +202,8 @@
 				141358471A0EAF96000E08A8 /* QuartzCore.framework */,
 				141358451A0EAF8B000E08A8 /* MobileCoreServices.framework */,
 				141358431A0EAF7D000E08A8 /* libz.dylib */,
+				14F894DD1A1EBC1200673E10 /* FBAudienceNetwork.framework */,
+				14F894DB1A1EBC1200673E10 /* FacebookSDK.framework */,
 				141358411A0EAF60000E08A8 /* CoreLocation.framework */,
 				1413583F1A0EAF50000E08A8 /* CoreGraphics.framework */,
 				1413583D1A0EAF44000E08A8 /* CFNetwork.framework */,
@@ -267,6 +276,7 @@
 			knownRegions = (
 				en,
 				Base,
+				he,
 			);
 			mainGroup = 1413580D1A0EAEC7000E08A8;
 			productRefGroup = 141358171A0EAEC7000E08A8 /* Products */;
@@ -304,10 +314,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1413581E1A0EAEC7000E08A8 /* ViewController.swift in Sources */,
+				14C7AE9E1A2543B500F777EA /* SwifferApp-Bridging-Header.h in Sources */,
 				1413581C1A0EAEC7000E08A8 /* AppDelegate.swift in Sources */,
 				140322191A0ECC5200CAEDA4 /* TimeLineTableViewController.swift in Sources */,
 				1403221D1A0ED59400CAEDA4 /* SweetTableViewCell.swift in Sources */,
+				14177D0B1A143D4E00BBE607 /* DirectMessageTableViewController.swift in Sources */,
 				1403221B1A0ECD3200CAEDA4 /* ComposeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +448,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.5.0",
+					/Users/Kareem/Documents/FacebookSDK,
+					/Users/Kareem/Documents/FacebookSDK/FBAudienceNetwork,
 				);
 				INFOPLIST_FILE = SwifferApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -457,6 +470,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.5.0",
+					/Users/Kareem/Documents/FacebookSDK,
+					/Users/Kareem/Documents/FacebookSDK/FBAudienceNetwork,
 				);
 				INFOPLIST_FILE = SwifferApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

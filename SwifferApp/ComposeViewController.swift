@@ -46,6 +46,15 @@ class ComposeViewController: UIViewController, UITextViewDelegate{
         
         sweet.saveInBackgroundWithTarget(nil , selector: nil)
         
+        var push:PFPush = PFPush()
+        push.setChannel("Reload")
+        
+        var data:NSDictionary = ["alert":"", "badge":"0", "content-available":"1","sound":""]
+        
+        push.setData(data)
+        push.sendPushInBackgroundWithTarget(nil, selector: nil)
+        
+        
         self.navigationController?.popToRootViewControllerAnimated(true)
         
     }

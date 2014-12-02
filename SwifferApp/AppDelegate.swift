@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate  {
 
     var window: UIWindow?
 
@@ -19,7 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.orangeColor()
         UINavigationBar.appearance().tintColor = UIColor.blackColor()
         
+        
         Parse.setApplicationId("0bLnreLJCyeCOGzcvB9wfocCcHoUW2ECIMKKhRM3", clientKey: "cTqxAoI1xeAaj1GcKNPNAYjZtWh5k7uaa0kFEhgz")
+        
+        
+        
+        let notificationTypes:UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+        let notificationSettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
+        
         
         
         /*
@@ -44,6 +54,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         */
         return true
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
+        let currentInstallation:PFInstallation = PFInstallation.currentInstallation()
+        currentInstallation.setDeviceTokenFromData(deviceToken)
+        currentInstallation.saveInBackgroundWithTarget(nil , selector: nil)
+        
+
+        
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo:NSDictionary!) {
+       
+        var notification:NSDictionary = userInfo.objectForKey("aps") as NSDictionary
+        
+        if(notification.objectForKey("content-available") != nil){
+            if((notification.objectForKey("content-available")?.isEqualToNumber(1)) != nil)
+            {
+                NSNotificationCenter.defaultCenter().postNotificationName("reloadTimeline", object: nil)
+                
+                
+                
+            }
+            
+            
+        }else{
+              PFPush.handlePush(userInfo)
+        }
+        
+        
+        
+        
+        
+      
+        
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        
+        println(error.localizedDescription)
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
