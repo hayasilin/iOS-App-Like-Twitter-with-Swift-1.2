@@ -87,7 +87,7 @@ class DirectMessageTableViewController: UITableViewController, UISearchBarDelega
         
         // Configure the cell...
         
-        cell.textLabel.text = user.username
+        cell.textLabel?.text = user.username
 
         return cell
     }

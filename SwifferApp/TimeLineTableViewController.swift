@@ -272,7 +272,6 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
         
         let cell: SweetTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as SweetTableViewCell
         
-        //let sweet:PFObject = self.timelineData.objectAtIndex(indexPath.row) as PFObject
         let sweet: PFObject = self.timelineData[indexPath.row] as PFObject
         
         
@@ -332,36 +331,6 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
 
                     }
                 }
-               /*
-                let user:PFUser = (objects as NSArray).lastObject as PFUser
-                cell.usernameLabel.text = user.username
-                
-                //Profile Image
-                cell.profileImageView.alpha = 0
-                
-                let profileImage:PFFile = user["profilePicture"] as PFFile
-                
-                profileImage.getDataInBackgroundWithBlock{
-                    (imageData:NSData! , error:NSError!)-> Void in
-                    
-                    if(error == nil) {
-                        let image:UIImage = UIImage (data: imageData)!
-                        cell.profileImageView.image = image
-                        
-                                    }
-                }
-
-                UIView.animateWithDuration(0.5, animations: {
-                    cell.sweetTextView.alpha = 1
-                    cell.timestampLabel.alpha = 1
-                    cell.usernameLabel.alpha = 1
-                    cell.profileImageView.alpha = 1
-                })
-                
-            }
-        }
-        */
-        
         
         return cell
     }
