@@ -18,14 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         
         UINavigationBar.appearance().barTintColor = UIColor.orangeColor()
         UINavigationBar.appearance().tintColor = UIColor.blackColor()
-<<<<<<< HEAD
+
         
         
         Parse.setApplicationId("0bLnreLJCyeCOGzcvB9wfocCcHoUW2ECIMKKhRM3", clientKey: "cTqxAoI1xeAaj1GcKNPNAYjZtWh5k7uaa0kFEhgz")
-=======
-        //Put your Parse Application Info
-        Parse.setApplicationId("", clientKey: "")
->>>>>>> f204d7d116e676673a78cebc96b1a3278d48dfcd
+
+
         
         
         
