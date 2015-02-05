@@ -15,7 +15,7 @@ these videos and uses the <b> Parse SDK </b>.
 
 <h2> Notice </h2> 
 
-Make sure you put your app and client ID from your Pasre account in your app delegate. 
+Make sure to  put your app and client ID from your Pasre account in your app delegate. 
 
 
 
