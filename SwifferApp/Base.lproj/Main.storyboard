@@ -130,7 +130,7 @@
                             </items>
                         </toolbar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="144" id="CMy-9n-CdZ" customClass="SweetTableViewCell" customModule="SwifferApp" customModuleProvider="target">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="144" id="CMy-9n-CdZ" customClass="SweetTableViewCell" customModule="SwifferApp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMy-9n-CdZ" id="QOv-8k-Jsx">
                                     <autoresizingMask key="autoresizingMask"/>
