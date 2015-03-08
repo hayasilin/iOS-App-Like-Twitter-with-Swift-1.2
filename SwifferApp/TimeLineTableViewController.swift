@@ -24,12 +24,14 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
     override func viewDidLoad() {
         
         super.viewDidLoad()
-       
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loadData", name:"reloadTimeline" , object: nil)
+        
         self.loadData()
         
          self.showLoginSignUp()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"loadData", name:"reloadTimeline" , object: nil)
+       
         
         
     }
