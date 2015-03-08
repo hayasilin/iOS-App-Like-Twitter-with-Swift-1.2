@@ -1,5 +1,5 @@
 # App-Like-Twitter
-
+### Announcement : Making some updates to fix issues please be patient with me :)
 <h2> About This Project </h2> 
 Based on the Brian Advent Tutorial w/ All Fixes. Swift tutorials were outdated from Apple's updates to the Swift library.
 I have edited the code so that you can easily continue following along with these tutorials. This projects goes through all of 
