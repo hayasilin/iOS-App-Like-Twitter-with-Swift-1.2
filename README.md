@@ -17,8 +17,26 @@ these videos and uses the <b> Parse SDK </b>.
 
 Make sure to  put your app and client ID from your Parse account in your app delegate. 
 
+```
+  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        UINavigationBar.appearance().barTintColor = UIColor.orangeColor()
+        UINavigationBar.appearance().tintColor = UIColor.blackColor()
 
+        
+        
+        Parse.setApplicationId("ENTER YOUR APP KEY HERE", clientKey: "ENTER YOUR CLIENT ID HERE")
+        
+        
+        let notificationTypes:UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+        let notificationSettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
 
+        return true
+    }
+
+```
 
 #The MIT License
 
