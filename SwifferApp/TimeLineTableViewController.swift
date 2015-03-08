@@ -60,7 +60,7 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
         }
     }
     
-    @IBAction func loadData(){
+    func loadData(){
         timelineData.removeAll(keepCapacity: false)
         
         var findTimelineData:PFQuery = PFQuery(className:"Sweets")
