@@ -27,14 +27,10 @@
 		1413584E1A0EAFB4000E08A8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1413584D1A0EAFB4000E08A8 /* SystemConfiguration.framework */; };
 		141358541A0EB037000E08A8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141358501A0EB037000E08A8 /* Bolts.framework */; };
 		141358551A0EB037000E08A8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141358511A0EB037000E08A8 /* Parse.framework */; };
-		141358561A0EB037000E08A8 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141358521A0EB037000E08A8 /* ParseFacebookUtils.framework */; };
-		141358571A0EB037000E08A8 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141358531A0EB037000E08A8 /* ParseUI.framework */; };
 		14177D0B1A143D4E00BBE607 /* DirectMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14177D0A1A143D4E00BBE607 /* DirectMessageTableViewController.swift */; };
 		141984511A102D8300999767 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141984501A102D8300999767 /* Social.framework */; };
 		141984531A102DFE00999767 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141984521A102DFE00999767 /* Accounts.framework */; };
 		14C7AE9E1A2543B500F777EA /* SwifferApp-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 141358591A0EB112000E08A8 /* SwifferApp-Bridging-Header.h */; };
-		14F895F11A1EBC1200673E10 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F894DB1A1EBC1200673E10 /* FacebookSDK.framework */; };
-		14F895F21A1EBC1200673E10 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F894DD1A1EBC1200673E10 /* FBAudienceNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,16 +66,12 @@
 		141358491A0EAFA2000E08A8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1413584B1A0EAFAB000E08A8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1413584D1A0EAFB4000E08A8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		141358501A0EB037000E08A8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		141358511A0EB037000E08A8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		141358521A0EB037000E08A8 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		141358531A0EB037000E08A8 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		141358501A0EB037000E08A8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.5.0/Bolts.framework"; sourceTree = "<group>"; };
+		141358511A0EB037000E08A8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.5.0/Parse.framework"; sourceTree = "<group>"; };
 		141358591A0EB112000E08A8 /* SwifferApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwifferApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		14177D0A1A143D4E00BBE607 /* DirectMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectMessageTableViewController.swift; sourceTree = "<group>"; };
 		141984501A102D8300999767 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		141984521A102DFE00999767 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		14F894DB1A1EBC1200673E10 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		14F894DD1A1EBC1200673E10 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = ../../FacebookSDK/FBAudienceNetwork/FBAudienceNetwork.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +83,6 @@
 				141984511A102D8300999767 /* Social.framework in Frameworks */,
 				1413584E1A0EAFB4000E08A8 /* SystemConfiguration.framework in Frameworks */,
 				1413584C1A0EAFAB000E08A8 /* StoreKit.framework in Frameworks */,
-				141358571A0EB037000E08A8 /* ParseUI.framework in Frameworks */,
-				14F895F11A1EBC1200673E10 /* FacebookSDK.framework in Frameworks */,
-				14F895F21A1EBC1200673E10 /* FBAudienceNetwork.framework in Frameworks */,
 				1413584A1A0EAFA2000E08A8 /* Security.framework in Frameworks */,
 				141358481A0EAF96000E08A8 /* QuartzCore.framework in Frameworks */,
 				141358461A0EAF8B000E08A8 /* MobileCoreServices.framework in Frameworks */,
@@ -104,7 +93,6 @@
 				1413583E1A0EAF44000E08A8 /* CFNetwork.framework in Frameworks */,
 				141358551A0EB037000E08A8 /* Parse.framework in Frameworks */,
 				1413583C1A0EAF3B000E08A8 /* AudioToolbox.framework in Frameworks */,
-				141358561A0EB037000E08A8 /* ParseFacebookUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,31 +167,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		1413584F1A0EB037000E08A8 /* parse-library-1.5.0 */ = {
-			isa = PBXGroup;
-			children = (
-				141358501A0EB037000E08A8 /* Bolts.framework */,
-				141358511A0EB037000E08A8 /* Parse.framework */,
-				141358521A0EB037000E08A8 /* ParseFacebookUtils.framework */,
-				141358531A0EB037000E08A8 /* ParseUI.framework */,
-			);
-			path = "parse-library-1.5.0";
-			sourceTree = "<group>";
-		};
 		141358581A0EB06F000E08A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				141984521A102DFE00999767 /* Accounts.framework */,
 				141984501A102D8300999767 /* Social.framework */,
-				1413584F1A0EB037000E08A8 /* parse-library-1.5.0 */,
+				141358501A0EB037000E08A8 /* Bolts.framework */,
+				141358511A0EB037000E08A8 /* Parse.framework */,
 				1413584D1A0EAFB4000E08A8 /* SystemConfiguration.framework */,
 				1413584B1A0EAFAB000E08A8 /* StoreKit.framework */,
 				141358491A0EAFA2000E08A8 /* Security.framework */,
 				141358471A0EAF96000E08A8 /* QuartzCore.framework */,
 				141358451A0EAF8B000E08A8 /* MobileCoreServices.framework */,
 				141358431A0EAF7D000E08A8 /* libz.dylib */,
-				14F894DD1A1EBC1200673E10 /* FBAudienceNetwork.framework */,
-				14F894DB1A1EBC1200673E10 /* FacebookSDK.framework */,
 				141358411A0EAF60000E08A8 /* CoreLocation.framework */,
 				1413583F1A0EAF50000E08A8 /* CoreGraphics.framework */,
 				1413583D1A0EAF44000E08A8 /* CFNetwork.framework */,

@@ -1,3 +1,4 @@
+
 //
 //  TimeLineTableViewController.swift
 //  SwifferApp
@@ -11,9 +12,9 @@ import UIKit
 class TimeLineTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
     var timelineData = [PFObject]()
-
     
-
+    
+    
     
     
     required init(coder aDecoder: NSCoder) {
@@ -23,9 +24,11 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        self.loadData()
        
+        self.loadData()
+        
+         self.showLoginSignUp()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"loadData", name:"reloadTimeline" , object: nil)
         
         
@@ -79,13 +82,13 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
                 }
         }
     }
-
+    
     
     
     
     override func viewDidAppear(animated: Bool) {
         
-       
+        
         
         var footerView:UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 50))
         self.tableView.tableFooterView = footerView
@@ -106,9 +109,9 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
         
         
         
-      
         
-}
+        
+    }
     
     
     
@@ -186,7 +189,7 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
                     installation.addUniqueObject("Reload", forKey: "channels")
                     installation["user"] = PFUser.currentUser()
                     installation.saveInBackgroundWithTarget(nil, selector: nil)
-
+                    
                     
                     
                     
@@ -245,7 +248,7 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -328,9 +331,9 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
                         
                     }
                 }
-
-                    }
-                }
+                
+            }
+        }
         
         return cell
     }
@@ -382,3 +385,4 @@ class TimeLineTableViewController: UITableViewController, UIImagePickerControlle
     */
     
 }
+
