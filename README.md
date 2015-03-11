@@ -17,6 +17,12 @@ these videos and uses the <b> Parse SDK </b>.
 
 Make sure to  put your app and client ID from your Parse account in your app delegate. 
 
+
+## Report an Issue 
+
+Please report any issues you come across on the repo, I am very responsive and have helped several people but it was because they were able to clearly state what was going on and supplied screen shots. If you do it on the repo itll be easier and quicker for me to deal with. 
+
+
 ```
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
